@@ -1,15 +1,19 @@
-# README
+# Sistema Pae
 
-## Información
+## Descripción
+Este software fue desarrollado para mejorar el sistema actual del almuerzo junaeb.
 
-Este software fue desarrollado usando Javascript y Go, con el Framework React y Gin
-
+## Tecnologías
+- React
+- Gin
+- Wails
+- Node
+- Go
+  
 ## Autor
-
 **Renato Cavieres Díaz**
 Estudiante de Ing. en informática
 
 ## Contacto
-
 Email: renatocavieres2005@gmail.com
 Github: maoudev
