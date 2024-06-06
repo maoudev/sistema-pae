@@ -1,0 +1,21 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "sistema-pae",
+  "outputfilename": "sistema-pae",
+  "frontend:install": "npm install --legacy-peer-deps",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "maoudev",
+    "email": "renatocavieres4321@gmail.com"
+  },
+  "info": {
+    "companyName": "maoudev",
+    "productName": "Sistema Pae",
+    "productVersion": "1.1.0",
+    "productDescription": "Sistema de control de Pae",
+    "copyRight": "Renato Andrés Cavieres Díaz",
+    "comments": "Desarrollado con React y Go."
+  }
+}
