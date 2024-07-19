@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { IconButton } from "@mui/material";
+import {Button, IconButton} from "@mui/material";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import DownloadXlsxButton from "./DownloadXlsxButton";
 import ButtonNoBenefeciario from "./ButtonNoBenefeciario";
+import {Link} from "react-router-dom";
 
 interface HeaderProps {
   setData: Function;
@@ -15,6 +17,12 @@ const Header: React.FC<HeaderProps> = ({ setData, handleNoBeneficiario }) => {
   const [rut, setRut] = useState("");
 
   const sendData = (value: string) => {
+
+    const txtrut = document.getElementById("txtrut") as HTMLInputElement;
+    txtrut.disabled = true;
+    txtrut.disabled = false;
+
+
     setData(value);
     setRut("");
   };
@@ -37,6 +45,7 @@ const Header: React.FC<HeaderProps> = ({ setData, handleNoBeneficiario }) => {
                 }}
               >
                 <InputBase
+                    id={"txtrut"}
                   sx={{ ml: 1, flex: 1, color: "white" }}
                   placeholder="Buscar por rut"
                   inputProps={{ "aria-label": "Buscador por Rut" }}
@@ -62,6 +71,14 @@ const Header: React.FC<HeaderProps> = ({ setData, handleNoBeneficiario }) => {
           </li>
           <li>
             <ButtonNoBenefeciario handleNoBeneficiario={handleNoBeneficiario} />
+          </li>
+          <li>
+            <Button
+                variant={"outlined"}
+                startIcon={<AddCircleOutlineIcon/>}
+                component={Link}
+                to={"/add"}
+            >Registrar Estudiante</Button>
           </li>
         </ul>
       </nav>

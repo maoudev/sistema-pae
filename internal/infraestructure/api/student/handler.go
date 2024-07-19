@@ -14,17 +14,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type studentService struct {
+type studentHandler struct {
 	studentService ports.StudentService
 }
 
-func newHandler(service ports.StudentService) *studentService {
-	return &studentService{
+func newHandler(service ports.StudentService) *studentHandler {
+	return &studentHandler{
 		studentService: service,
 	}
 }
 
-func (u *studentService) CreateStudent(c *gin.Context) {
+func (u *studentHandler) CreateStudent(c *gin.Context) {
 	student := &domain.Student{}
 
 	if err := c.BindJSON(student); err != nil {
@@ -41,7 +41,7 @@ func (u *studentService) CreateStudent(c *gin.Context) {
 	c.JSON(http.StatusOK, nil)
 }
 
-func (u *studentService) GetStudent(c *gin.Context) {
+func (u *studentHandler) GetStudent(c *gin.Context) {
 	rut := c.Param("rut")
 
 	student, err := u.studentService.GetStudentByRut(rut)
@@ -58,7 +58,7 @@ func (u *studentService) GetStudent(c *gin.Context) {
 	c.JSON(http.StatusOK, student)
 }
 
-func (u *studentService) GetStudentWithDash(c *gin.Context) {
+func (u *studentHandler) GetStudentWithDash(c *gin.Context) {
 	rut := c.Param("rut")
 
 	student, err := u.studentService.GetStudentByRutWithDash(rut)
@@ -75,7 +75,7 @@ func (u *studentService) GetStudentWithDash(c *gin.Context) {
 	c.JSON(http.StatusOK, student)
 }
 
-func (u *studentService) GetStudents(c *gin.Context) {
+func (u *studentHandler) GetStudents(c *gin.Context) {
 	file, err := u.studentService.GetStudentsDocument()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
@@ -93,7 +93,7 @@ func (u *studentService) GetStudents(c *gin.Context) {
 	c.File(fileName)
 }
 
-func (u *studentService) InsertStudentWithoutBenefit(c *gin.Context) {
+func (u *studentHandler) InsertStudentWithoutBenefit(c *gin.Context) {
 	if err := u.studentService.InsertStudentWithoutBenefit(); err != nil {
 		c.JSON(http.StatusInternalServerError, nil)
 		return
